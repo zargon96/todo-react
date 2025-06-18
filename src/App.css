@@ -83,3 +83,94 @@ body .dragging-item {
   max-width: 100%;
   display: inline-block;
 }
+
+@media (max-width: 576px) {
+  .input-group {
+    flex-direction: column !important;
+    align-items: stretch;
+  }
+
+  .input-group .form-control {
+    margin-bottom: 0.5rem;
+    width: 100%;
+    border-radius: 0.5rem;
+  }
+
+  .input-group .btn {
+    width: 100%;
+    border-radius: 0.5rem;
+  }
+  .todo-card {
+    padding: 1.5rem 1rem;
+  }
+
+  h1 {
+    font-size: 2.5rem !important;
+    text-align: center;
+  }
+
+  .btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .task-text {
+    font-size: 1rem;
+    word-break: break-word;
+    max-width: 100%;
+  }
+
+  .d-flex.justify-content-around {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start !important;
+  }
+
+  .drag-icon {
+    font-size: 1.2rem;
+  }
+
+  .input-group {
+    flex-direction: column;
+  }
+
+  .input-group .form-control {
+    margin-bottom: 0.5rem;
+  }
+
+  .list-group-item {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  .task-text,
+  .drag-icon,
+  .form-check-input {
+    margin-bottom: 0.5rem;
+  }
+
+  .todo-card .btn-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .custom-alert .d-flex {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .custom-alert .d-flex > div {
+    width: 100%;
+  }
+
+  .custom-alert .d-flex .btn {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  button.mt-2.btn.btn-link {
+    margin-bottom: 2rem;
+  }
+}

@@ -171,6 +171,7 @@ export default function Index() {
                   variant="secondary"
                   dismissible
                   onClose={handleAlertCancel}
+                  className="custom-alert"
                 >
                   <div className="d-flex justify-content-between align-items-center">
                     <div

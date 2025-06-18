@@ -43,22 +43,33 @@ export default function Header({
             {darkMode ? <FaSun /> : <FaMoon />}
           </Button>
         </Col>
+        <InputGroup>
+          <Col md={12}>
+            <Row className="d-flex flex-column align-items-center gap-2 mb-4">
+              <Col md={6} lg={12}>
+                <FormControl
+                  placeholder="Aggiungi un task"
+                  value={inputTask}
+                  onChange={(e) => setInputTask(e.target.value)}
+                  className="w-100 w-md-75"
+                />
+              </Col>
+              <Col md={6} lg={12}>
+                <Button
+                  variant="secondary"
+                  onClick={handleAddOrEdit}
+                  className="w-100 w-md-75"
+                  disabled={isDisabled}
+                >
+                  {editIndex !== null ? "Salva" : "Aggiungi"}
+                </Button>
+              </Col>
+            </Row>
+          </Col>
+        </InputGroup>
+
         <Col md={12}>
-          <InputGroup className="mb-4">
-            <FormControl
-              placeholder="Aggiungi o modifica un task"
-              value={inputTask}
-              onChange={(e) => setInputTask(e.target.value)}
-            />
-            <Button
-              variant="secondary"
-              onClick={handleAddOrEdit}
-              disabled={isDisabled}
-            >
-              {editIndex !== null ? "Salva" : "Aggiungi"}
-            </Button>
-          </InputGroup>
-          <div className="text-end mb-3">
+          <div className="text-end mt-3">
             {tasks.length > 0 && (
               <Button
                 variant="secondary"
