@@ -310,7 +310,7 @@ export default function Index() {
                 </div>
                 <Button
                   size="sm"
-                  variant="outline-danger"
+                  variant="danger"
                   onClick={() =>
                     setTasks((prev) => prev.filter((t) => !t.completed))
                   }
