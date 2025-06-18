@@ -85,6 +85,9 @@ body .dragging-item {
 }
 
 @media (max-width: 576px) {
+  .width-100-mobile {
+    width: 100% !important;
+  }
   .app-container {
     padding: 1rem;
   }

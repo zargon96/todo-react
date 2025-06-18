@@ -291,7 +291,7 @@ export default function Index() {
                 <div>
                   {tasks.filter((t) => !t.completed).length} task rimasti
                 </div>
-                <div className="w-100">
+                <div className="width-100-mobile">
                   {[
                     ["all", "Tutti"],
                     ["active", "Attive"],
