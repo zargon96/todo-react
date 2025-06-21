@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 const Checkbox = ({ id, checked, onChange }) => {
@@ -31,7 +30,9 @@ const StyledWrapper = styled.div`
     position: relative;
     width: 18px;
     height: 18px;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .check:before {
@@ -39,8 +40,8 @@ const StyledWrapper = styled.div`
     position: absolute;
     top: -15px;
     left: -15px;
-    width: 48px;
-    height: 48px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     background: rgba(34, 50, 84, 0.03);
     opacity: 0;

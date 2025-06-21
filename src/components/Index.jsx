@@ -182,7 +182,7 @@ export default function Index() {
                     >
                       {alert.message}
                     </div>
-                    <div className="d-flex">
+                    <div className="d-flex btn-allert">
                       <Button
                         variant="outline-secondary"
                         size="sm"
@@ -259,7 +259,7 @@ export default function Index() {
                                     {task.text}
                                   </span>
                                 </div>
-                                <div className="ms-2 d-flex">
+                                <div className="ms-2 d-flex btn-delete-edit">
                                   <Button
                                     variant="secondary"
                                     size="sm"
@@ -287,7 +287,7 @@ export default function Index() {
                 </Droppable>
               </DragDropContext>
 
-              <div className="d-flex justify-content-around align-items-center mt-4">
+              <div className="d-flex justify-content-around align-items-center mt-4 container">
                 <div>
                   {tasks.filter((t) => !t.completed).length} task rimasti
                 </div>

@@ -24,14 +24,14 @@ export default function Header({
   return (
     <Container>
       <Row className="justify-content-center text-center">
-        <Col md={6}>
-          <h1 className="mb-4" style={{ fontSize: "4rem" }}>
+        <Col md={6} xs={6}>
+          <h1 className="mb-4 title-todo" style={{ fontSize: "4rem" }}>
             Todo
           </h1>
         </Col>
-        <Col md={6}>
+        <Col md={6} xs={6}>
           <Button
-            className="mt-2"
+            className="mt-2 icon-theme"
             variant="link"
             onClick={() => setDarkMode((prev) => !prev)}
             style={{
@@ -69,7 +69,7 @@ export default function Header({
         </InputGroup>
 
         <Col md={12}>
-          <div className="text-end mt-3">
+          <div className="text-end mt-3 slection-tasks-btn">
             {tasks.length > 0 && (
               <Button
                 variant="secondary"
