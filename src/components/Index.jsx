@@ -184,7 +184,7 @@ export default function Index() {
                     </div>
                     <div className="d-flex btn-allert">
                       <Button
-                        variant="outline-secondary"
+                        variant="danger"
                         size="sm"
                         className="me-2"
                         onClick={handleAlertCancel}
@@ -192,7 +192,7 @@ export default function Index() {
                         Annulla
                       </Button>
                       <Button
-                        variant="danger"
+                        variant="secondary"
                         size="sm"
                         onClick={handleAlertConfirm}
                       >
