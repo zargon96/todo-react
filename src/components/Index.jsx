@@ -80,6 +80,7 @@ export default function Index() {
       return [...prev, { id: Date.now(), text: txt, completed: false }];
     });
 
+    setAlert({ show: false, type: null, id: null, message: "" });
     setInputTask("");
     setEditId(null);
   }, [inputTask, editId, tasks, setTasks]);
