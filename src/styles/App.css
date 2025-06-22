@@ -13,6 +13,26 @@ body {
   width: 100%;
 }
 
+.blur-overlay {
+  filter: blur(3px);
+  pointer-events: none;
+  user-select: none;
+  transition: filter 0.3s ease;
+}
+
+.edit-mode-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  background: var(--bs-body-bg, #fff);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  width: clamp(280px, 90vw, 500px);
+}
+
 body.light-theme {
   background-color: #f9f9f9;
   color: #222;
@@ -106,6 +126,11 @@ body .dragging-item {
   .app-container {
     padding: 1rem;
   }
+  .edit-mode-box {
+    padding: 1rem;
+    width: 77vw;
+  }
+
   .input-group {
     flex-direction: column !important;
     align-items: stretch;

@@ -16,6 +16,7 @@ export default function Header({
   editIndex,
   handleToggleAll,
   allSelected,
+  inputRef,
 }) {
   const { darkMode, setDarkMode, tasks } = useAppContext();
   const isDisabled = inputTask.trim() === "";
@@ -48,6 +49,7 @@ export default function Header({
             <Row className="d-flex flex-column align-items-center gap-2 mb-4">
               <Col md={6} lg={12}>
                 <FormControl
+                  ref={inputRef}
                   placeholder="Aggiungi un task"
                   value={inputTask}
                   onChange={(e) => setInputTask(e.target.value)}
