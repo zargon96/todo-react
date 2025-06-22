@@ -297,31 +297,32 @@ export default function Index() {
                   )}
 
                   {alert.show && (
-                    <>
+                    <div className={`mt-4 p-3`}>
                       <Alert
                         variant={
                           alert.type === "duplicate" ? "danger" : "secondary"
                         }
-                        className="mt-4"
                         dismissible
                         onClose={handleAlertCancel}
+                        className="mb-3"
                       >
                         {alert.message}
                       </Alert>
+
                       {alert.type === "delete" && (
                         <div className="d-flex justify-content-end gap-2">
                           <Button variant="danger" onClick={handleAlertConfirm}>
                             Elimina
                           </Button>
                           <Button
-                            variant="outline-secondary"
+                            variant="secondary"
                             onClick={handleAlertCancel}
                           >
                             Annulla
                           </Button>
                         </div>
                       )}
-                    </>
+                    </div>
                   )}
                 </div>
               )}
