@@ -1,11 +1,14 @@
 import Index from "./components/Index";
-import "./App.css";
+import "../src/styles/App.css";
+import { AppProvider } from "./context/AppContext";
 
 function App() {
   return (
-    <div className="App">
-      <Index />
-    </div>
+    <AppProvider>
+      <div className="App">
+        <Index />
+      </div>
+    </AppProvider>
   );
 }
 

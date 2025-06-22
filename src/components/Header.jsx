@@ -7,18 +7,17 @@ import {
   Container,
 } from "react-bootstrap";
 import { FaMoon, FaSun } from "react-icons/fa";
+import { useAppContext } from "../context/AppContext";
 
 export default function Header({
   inputTask,
   setInputTask,
   handleAddOrEdit,
   editIndex,
-  darkMode,
-  setDarkMode,
-  tasks,
   handleToggleAll,
   allSelected,
 }) {
+  const { darkMode, setDarkMode, tasks } = useAppContext();
   const isDisabled = inputTask.trim() === "";
 
   return (
@@ -43,6 +42,7 @@ export default function Header({
             {darkMode ? <FaSun /> : <FaMoon />}
           </Button>
         </Col>
+
         <InputGroup>
           <Col md={12}>
             <Row className="d-flex flex-column align-items-center gap-2 mb-4">

@@ -5,24 +5,15 @@ import Header from "./Header";
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import { RxDragHandleDots2 } from "react-icons/rx";
+import { useAppContext } from "../context/AppContext";
 
 export default function Index() {
-  const [tasks, setTasks] = useState(() => {
-    try {
-      const saved = localStorage.getItem("tasks");
-      return saved ? JSON.parse(saved) : [];
-    } catch {
-      return [];
-    }
-  });
+  const { tasks, setTasks, darkMode } = useAppContext();
+
   const [allSelected, setAllSelected] = useState(false);
   const [editId, setEditId] = useState(null);
   const [inputTask, setInputTask] = useState("");
   const [filter, setFilter] = useState("all");
-  const [darkMode, setDarkMode] = useState(() => {
-    const saved = localStorage.getItem("darkMode");
-    return saved ? JSON.parse(saved) : false;
-  });
 
   const [alert, setAlert] = useState({
     show: false,
@@ -30,18 +21,6 @@ export default function Index() {
     id: null,
     message: "",
   });
-
-  useEffect(() => {
-    document.body.className = darkMode ? "dark-theme" : "light-theme";
-  }, [darkMode]);
-
-  useEffect(() => {
-    localStorage.setItem("darkMode", JSON.stringify(darkMode));
-  }, [darkMode]);
-
-  useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
 
   useEffect(() => {
     if (tasks.length === 0) {
@@ -81,6 +60,19 @@ export default function Index() {
     const txt = inputTask.trim();
     if (!txt) return;
 
+    const exists = tasks.some(
+      (t) => t.text.toLowerCase() === txt.toLowerCase()
+    );
+    if (exists && editId === null) {
+      setAlert({
+        show: true,
+        type: null,
+        id: null,
+        message: `Il task "${txt}" esiste già.`,
+      });
+      return;
+    }
+
     setTasks((prev) => {
       if (editId !== null) {
         return prev.map((t) => (t.id === editId ? { ...t, text: txt } : t));
@@ -90,13 +82,16 @@ export default function Index() {
 
     setInputTask("");
     setEditId(null);
-  }, [inputTask, editId]);
+  }, [inputTask, editId, tasks, setTasks]);
 
-  const toggleComplete = useCallback((id) => {
-    setTasks((prev) =>
-      prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t))
-    );
-  }, []);
+  const toggleComplete = useCallback(
+    (id) => {
+      setTasks((prev) =>
+        prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t))
+      );
+    },
+    [setTasks]
+  );
 
   const filteredTasks = useMemo(() => {
     return tasks.filter((t) =>
@@ -108,15 +103,18 @@ export default function Index() {
     );
   }, [tasks, filter]);
 
-  const onDragEnd = useCallback((result) => {
-    if (!result.destination) return;
-    setTasks((prev) => {
-      const updated = [...prev];
-      const [moved] = updated.splice(result.source.index, 1);
-      updated.splice(result.destination.index, 0, moved);
-      return updated;
-    });
-  }, []);
+  const onDragEnd = useCallback(
+    (result) => {
+      if (!result.destination) return;
+      setTasks((prev) => {
+        const updated = [...prev];
+        const [moved] = updated.splice(result.source.index, 1);
+        updated.splice(result.destination.index, 0, moved);
+        return updated;
+      });
+    },
+    [setTasks]
+  );
 
   const handleAlertCancel = () => {
     setAlert({ show: false, type: null, id: null, message: "" });
@@ -159,9 +157,6 @@ export default function Index() {
                 setInputTask={setInputTask}
                 handleAddOrEdit={handleAddOrEdit}
                 editIndex={editId !== null}
-                darkMode={darkMode}
-                setDarkMode={setDarkMode}
-                tasks={tasks}
                 handleToggleAll={handleToggleAll}
                 allSelected={allSelected}
               />
