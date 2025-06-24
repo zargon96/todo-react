@@ -1,11 +1,13 @@
-# Nome del progetto
+# Todo React App
 
-Todo React è un app per la gestione delle task.
+Todo React è un app per la gestione delle task sviluppata con **React**.  
+Progettata per essere semplice, veloce e intuitiva, include funzionalità avanzate come il **tema dinamico**, **salvataggio persistente** e **riordino con drag & drop**.
 
 ## Tecnologie utilizzate
 
 - React
 - Bootstrap
+- CSS
 
 ## Funzionalità principali
 
